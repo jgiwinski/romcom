@@ -51,6 +51,10 @@ mainPage.innerHTML = `
 
 function saveMakeOwnCover() {
   event.preventDefault()
+  fixBrokenCover();
+  if (fixBrokenCover()) {
+    return alert("Can't create new cover without all values in each field. Try again!");
+  }
   currentCover = new Cover(userCover.value, userTitle.value, userDescriptor1.value, userDescriptor2.value)
 
   mainPage.innerHTML = `
@@ -67,7 +71,6 @@ function saveMakeOwnCover() {
     mainPage.classList.remove('hidden');
     saveCoverButton.classList.remove('hidden');
     randomCoverButton.classList.remove('hidden');
-    fixBrokenCover();
 };
 
 function showMakeOwnCover() {
@@ -113,6 +116,7 @@ function saveCover(){
 function displayAllSavedCovers() {
   viewSavedSection.classList.remove('hidden');
   homeView.classList.add('hidden');
+  savedCoversSection.innerHTML = '';
 
   for (var i = 0; i < savedCovers.length; i++){
     savedCoversSection.innerHTML += `
@@ -128,8 +132,8 @@ function displayAllSavedCovers() {
 };
 
 function fixBrokenCover() {
-  if (userCover.value === "" && userTitle.value === "" && userDescriptor1.value === "" && userDescriptor2.value === ""){
-  alert("Can't create new cover without all values in each field. Try again!")
-  window.location.reload();
+  if (userCover.value === "" || userTitle.value === "" || userDescriptor1.value === "" || userDescriptor2.value === ""){
+  // window.location.reload();
+  return true;
   }
 };
