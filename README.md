@@ -18,6 +18,6 @@ JavaScript, HTML & CSS
 ### https://jgiwinski.github.io/romcom/
 
 ## Authors
-*** Julia Iwinski ***
-*** Cody Durham ***
+*Julia Iwinski*<br>
+*Cody Durham*
 
